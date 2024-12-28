@@ -1,0 +1,94 @@
+<%- include('./partials/navbar.ejs') %>
+    <div class="home-container">
+        <header>
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item slider-image active">
+                        <img src="/image/slider_1.webp" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h2>Future Tech Trends</h2>
+                            <p>Exploring innovation, AI, and cybersecurity shaping tomorrow's digital landscape.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item slider-image">
+                        <img src="/image/slider_2.webp" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h2>Global Tech Connectivity</h2>
+                            <p>Connecting innovations worldwide through AI, cybersecurity, and digital transformation.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item slider-image">
+                        <img src="/image/slider_3.webp" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h2>Tech Meets Innovation</h2>
+                            <p>Empowering breakthroughs through AI, digital networks, and technological evolution.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </header>
+        <main>
+            <div class="title">
+                <h1>All posts</h1>
+                <span></span>
+            </div>
+            <div class="posts">
+                <div class="row row-cols-1 row-cols-md-3 mb-5 g-4">
+                    <% if (posts?.length<=0) { %>
+                        <h1>No post found</h1>
+                        <% }else{ %>
+                            <% posts?.forEach((post)=>{%>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <img src="<%=post?.image%>" class="card-img-top" alt="...">
+                                        <div class="card-body d-flex flex-column justify-content-between">
+                                            <div>
+                                                <h5 class="card-title">
+                                                    <%=post?.title%>
+                                                </h5>
+                                                <h6 class="card-category">
+                                                    Category : <%=post?.category%>
+                                                </h6>
+                                                <p class="card-text">
+                                                    <%= truncatePost(post?.description) %>
+                                                </p>
+                                            </div>
+                                            <a href="/api/v1/posts/<%=post?._id%>" class="btn w-25">Read more</a>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted d-flex justify-content-between date"><span><i
+                                                        class="fas fa-calendar-alt me-2"></i>
+                                                    <%=post?.createdAt.toLocaleDateString()%>
+                                                </span>
+                                                <span><i class="fas fa-user me-2"></i>
+                                                    <%=post?.user?.fullname%>
+                                                </span>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% })%>
+                                    <%}%>
+                </div>
+            </div>
+        </main>
+    </div>

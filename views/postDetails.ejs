@@ -1,0 +1,42 @@
+<%- include('./partials/navbar.ejs') %>
+    <main>
+        <div class="container post-container mb-5 mt-5">
+            <div class="post-details">
+                <div class="post-title">
+                    <h1>
+                        <%=post?.title%>
+                    </h1>
+                </div>
+                <div class="post-image">
+                    <img src="<%=post?.image%>" alt="">
+                </div>
+                <div class="post-dtl">
+                    <span class="ms-5">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <%=post?.createdAt.toLocaleDateString()%>
+                    </span>
+                </div>
+                <div class="post-category">
+                    <h3>
+                        Category : <%=post?.category%>
+                    </h3>
+                </div>
+                <div class="post-description">
+                    <p>
+                        <%=post?.description%>
+                    </p>
+                </div>
+            </div>
+            <div class="post-author">
+                <div class="post-author-image"><img
+                        src="<%= post?.user.profileImage ? post?.user.profileImage : '/image/user-image.png' %>" alt="">
+                </div>
+                <div class="author-name">
+                    <h5>
+                        <%=post?.user?.fullname%>
+                    </h5>
+                </div>
+            </div>
+
+        </div>
+    </main>

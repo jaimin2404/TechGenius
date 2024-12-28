@@ -1,0 +1,42 @@
+<%- include('./partials/navbar.ejs') %>
+    <div class="form-container">
+        <div class="form mt-5 mb-5">
+            <h1>Update post</h1>
+            <form action="/api/v1/posts/<%=post?._id%>?_method=PUT" method="post" autocomplete="off"
+                enctype="multipart/form-data">
+                <div class="box">
+                    <label for="title">Post title</label>
+                    <input type="text" value="<%=post?.title%>" name="title" id="title" required>
+                </div>
+                <div class="box">
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option value="react js" <%=post?.category==="react js" ? "selected" : "" %>>React js</option>
+                        <option value="html" <%=post?.category==="html" ? "selected" : "" %>>HTML</option>
+                        <option value="css" <%=post?.category==="css" ? "selected" : "" %>>CSS</option>
+                        <option value="node js" <%=post?.category==="node js" ? "selected" : "" %>>Node js</option>
+                        <option value="javascript" <%=post?.category==="javascript" ? "selected" : "" %>>Javascript
+                        </option>
+                        <option value="other" <%=post?.category==="other" ? "selected" : "" %>>Other</option>
+                    </select>
+                </div>
+                <div class="box">
+                    <label for="description">Post Description</label>
+                    <textarea name="description" id="description" cols="30" rows="10"><%=post?.description%></textarea>
+                </div>
+                <div class="box">
+                    <label for="image">Post Image</label>
+                    <input type="file" name="file" id="image">
+                </div>
+                <% if (error) { %>
+                    <span class="error">
+                        <%=error %>
+                    </span>
+                    <% } %>
+
+                        <div class="box">
+                            <button type="submit" class="btn">Update post</button>
+                        </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,16 @@
+<%- include('./partials/navbar.ejs') %>
+    <div class="form-container">
+        <div class="form">
+            <h1>Upload profile image</h1>
+            <form action="/api/v1/users/profile-image-upload?_method=PUT" method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <label for="image">Upload Image</label>
+                    <input type="file" name="profile" id="image">
+                </div>
+
+                <div class="box">
+                    <button type="submit" class="btn">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>

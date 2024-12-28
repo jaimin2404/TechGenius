@@ -1,0 +1,40 @@
+<%- include('./partials/navbar.ejs') %>
+    <div class="form-container">
+        <div class="form mt-5 mb-5">
+            <h1>Add post +</h1>
+            <form action="/api/v1/posts" method="post" autocomplete="off" enctype="multipart/form-data">
+                <div class="box">
+                    <label for="title">Post title</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+                <div class="box">
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option value="react js">React js</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="node js">Node js</option>
+                        <option value="javascript">Javascript</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="box">
+                    <label for="description">Post Description</label>
+                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                </div>
+                <div class="box">
+                    <label for="image">Post Image</label>
+                    <input type="file" name="file" id="image">
+                </div>
+                <% if (error) { %>
+                    <span class="error">
+                        <%=error %>
+                    </span>
+                    <% } %>
+
+                        <div class="box">
+                            <button type="submit" class="btn">Create post</button>
+                        </div>
+            </form>
+        </div>
+    </div>
